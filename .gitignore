@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Backend runtime storage (regenerated locally, not part of source)
+backend/storage/models/*
+backend/storage/datasets/*
+backend/storage/investigations/*
+!backend/storage/models/.gitkeep
+!backend/storage/datasets/.gitkeep
+!backend/storage/investigations/.gitkeep
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# OS
+.DS_Store
