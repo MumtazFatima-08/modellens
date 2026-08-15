@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Custom palette — defined the Tailwind v4-native way (CSS @theme),
+     not the old tailwind.config.js "theme.extend" way, which v4 ignores
+     unless explicitly linked via @config. This is what was silently
+     broken before: classes like text-midnight-950 generated no CSS,
+     which is why the active tab / dropdown / logo icon looked invisible. */
+  --color-midnight-950: #07061a;
+  --color-midnight-900: #0c0a24;
+  --color-midnight-800: #12102f;
+  --color-midnight-700: #1a1740;
+  --color-violet-glow: #6d3ff2;
+  --color-amber-glow: #fb923c;
+
+  --radius-xl2: 1.25rem;
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: #07061a;
+  color: #f4f2fb;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+.modellens-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: #07061a;
+}
+.modellens-bg::before,
+.modellens-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+}
+.modellens-bg::before {
+  width: 60vw; height: 60vw; top: -18vw; left: -10vw;
+  background: radial-gradient(circle at 30% 30%, #6d3ff2, #241a5e 60%, transparent 75%);
+}
+.modellens-bg::after {
+  width: 45vw; height: 45vw; bottom: -15vw; right: -10vw;
+  background: radial-gradient(circle at 60% 40%, #fb923c, #7c2d12 55%, transparent 75%);
+  opacity: 0.35;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(18px);
+  border-radius: 1.25rem;
+}
+.glass-nav {
+  background: rgba(12, 10, 36, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+.severity-critical { border-left-color: #f87171; }
+.severity-warning { border-left-color: #fbbf24; }
+.severity-info { border-left-color: #60a5fa; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
