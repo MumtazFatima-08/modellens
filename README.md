@@ -215,9 +215,7 @@ tests through the live API (including the text-classification pipeline).
 - Celery/RQ + Postgres + object storage for real multi-user deployment
 - Image model (CNN) and transformer-based text model support
 
-## License
-
-MIT (or update this line to match your actual choice).
+.
 
 ## Contributing
 
