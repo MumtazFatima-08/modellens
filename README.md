@@ -3,13 +3,13 @@
 Upload a trained scikit-learn model and an evaluation dataset. ModelLens runs a real statistical investigation — evaluation, error analysis, subgroup discovery, drift testing, and calibration — and reports the findings as structured, evidence-backed statements instead of a single accuracy score.
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white&labelColor=0b0f14)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white&labelColor=0b0f14)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white&labelColor=0b0f14)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white&labelColor=0b0f14)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.11-009688?logo=fastapi&logoColor=white&labelColor=0b0f14)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4-F7931E?logo=scikitlearn&logoColor=white&labelColor=0b0f14)
-![pytest](https://img.shields.io/badge/pytest-tested-0A9EDC?logo=pytest&logoColor=white&labelColor=0b0f14)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688?logo=fastapi&logoColor=white&labelColor=0b0f14)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4%2B-F7931E?logo=scikitlearn&logoColor=white&labelColor=0b0f14)
+![pytest](https://img.shields.io/badge/pytest-8%2B-0A9EDC?logo=pytest&logoColor=white&labelColor=0b0f14)
 
-[Live Demo](https://modellens-1.onrender.com) · [API](https://modellens-12i4.onrender.com/api/health) · [Getting Started](#getting-started) · [Limitations](#current-limitations)
+[Live Demo](https://modellens-1.onrender.com) · [API](https://modellens-94mb.onrender.com/api/health) · [Getting Started](#getting-started) · [Limitations](#current-limitations)
 
 > Hosted on Render's free tier — the API may take 30–60s to wake up after a period of inactivity.
 
@@ -51,6 +51,19 @@ Metrics    Error/Slice     Drift vs.      Calibration &
 ```
 
 Each stage runs against the real uploaded artifacts and contributes evidence — a metric, a statistical test result, a flagged subgroup — that the finding generator turns into a plain-language statement with its supporting numbers attached, not a hardcoded template filled with placeholder text.
+
+## Supported Models
+
+ModelLens currently investigates **scikit-learn-compatible estimators** saved as `.pkl` or `.joblib`. The adapter layer relies on the standard `.predict()` interface, with optional `.predict_proba()` support for probability-based classification analysis.
+
+| Model family | Support |
+|---|---|
+| Scikit-learn classifiers | Supported |
+| Scikit-learn regressors | Supported |
+| Scikit-learn Pipelines | Supported |
+| XGBoost / LightGBM sklearn wrappers | Supported when they expose the sklearn estimator interface |
+| Text pipelines with an embedded vectorizer | Supported |
+| Keras / TensorFlow / PyTorch / ONNX model files | Rejected in the current build |
 
 ## Core Capabilities
 
